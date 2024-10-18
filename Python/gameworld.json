@@ -1,0 +1,64 @@
+{
+    "vertices": [
+        {
+            "name": "Aladdin",
+            "type": "NPC",
+            "age": 18,
+            "gender": "male",
+            "role": "citizen"
+        },
+        {
+            "name": "Jasmine",
+            "type": "NPC",
+            "age": 20,
+            "gender": "female",
+            "role": "princess"
+        },
+        {
+            "name": "Jafar",
+            "type": "NPC",
+            "age": 35,
+            "gender": "male",
+            "role": "sorcerer"
+        },
+        {
+            "name": "Magic Lamp",
+            "type": "Item"
+        },
+        {
+            "name": "Sword",
+            "type": "weapon"
+        },
+        {
+            "name": "Dragon",
+            "type": "Monster"
+        },
+        {
+            "name": "Palace",
+            "type": "Location"
+        },
+        {
+            "name": "Cave",
+            "type": "Location"
+        }
+    ],
+
+    "edges": {
+        "Aladdin": {
+            "Jasmine": "love"
+        },
+        "Jafar": {
+            "Jasmine": "love",
+            "Aladdin": "envy"
+        },
+        "Dragon":{
+            "Cave": "live in",
+            "Magic Lamp": "have" 
+        },
+        "Jasmine":{
+            "Palace": "live in",
+            "Jafar": "doubt"
+        }
+
+    }
+}
