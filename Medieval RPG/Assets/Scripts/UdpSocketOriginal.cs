@@ -20,7 +20,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-public class UdpSocket2 : MonoBehaviour
+public class UdpSocketOriginal : MonoBehaviour
 {
     [HideInInspector] public bool isTxStarted = false;
 
@@ -33,7 +33,7 @@ public class UdpSocket2 : MonoBehaviour
     IPEndPoint remoteEndPoint;
     Thread receiveThread; // Receiving Thread
 
-    PythonTest2 pythonTest;
+    PythonTestOriginal pythonTest;
 
 
     //IEnumerator SendDataCoroutine() // DELETE THIS: Added to show sending data from Unity to Python via UDP
@@ -81,7 +81,7 @@ public class UdpSocket2 : MonoBehaviour
 
     private void Start() 
     {
-        pythonTest = FindObjectOfType<PythonTest2>(); // Instead of using a public variable
+        pythonTest = FindObjectOfType<PythonTestOriginal>(); // Instead of using a public variable
     }
 
     // Receive data, update packets received

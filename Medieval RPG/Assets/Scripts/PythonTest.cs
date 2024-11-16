@@ -6,9 +6,9 @@ using TMPro;
 public class PythonTest : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pythonRcvdText = null;
-    [SerializeField] TextMeshProUGUI sendToPythonText = null;
+    [SerializeField] TMP_InputField messageInputField = null;
 
-    string tempStr = "Sent from Python xxxx";
+    string tempStr = "Message";
     int numToSendToPython = 0;
     UdpSocket udpSocket;
 
@@ -25,15 +25,18 @@ public class PythonTest : MonoBehaviour
 
     public void SendToPython()
     {
-        udpSocket.SendData("Sent From Unity: " + numToSendToPython.ToString());
-        numToSendToPython++;
-        sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
+        if (messageInputField.text != "")
+        {
+            udpSocket.SendData(messageInputField.text);
+            messageInputField.text = null;
+        }
+        else
+            udpSocket.SendData("NULL");
     }
 
     private void Start()
     {
         udpSocket = FindObjectOfType<UdpSocket>();
-        sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
     }
 
     void Update()

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PythonTest2 : MonoBehaviour
+public class PythonTestOriginal : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI pythonRcvdText = null;
-    [SerializeField] TMP_InputField messageInputField = null;
+    [SerializeField] TextMeshProUGUI sendToPythonText = null;
 
-    string tempStr = "Message";
+    string tempStr = "Sent from Python xxxx";
     int numToSendToPython = 0;
-    UdpSocket2 udpSocket;
+    UdpSocketOriginal udpSocket;
 
     public void QuitApp()
     {
@@ -25,18 +25,15 @@ public class PythonTest2 : MonoBehaviour
 
     public void SendToPython()
     {
-        if (messageInputField.text != "")
-        {
-            udpSocket.SendData(messageInputField.text);
-            messageInputField.text = null;
-        }
-        else
-            udpSocket.SendData("NULL");
+        udpSocket.SendData("Sent From Unity: " + numToSendToPython.ToString());
+        numToSendToPython++;
+        sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
     }
 
     private void Start()
     {
-        udpSocket = FindObjectOfType<UdpSocket2>();
+        udpSocket = FindObjectOfType<UdpSocketOriginal>();
+        sendToPythonText.text = "Send Number: " + numToSendToPython.ToString();
     }
 
     void Update()
