@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IEntity
 {
-    public void SendEntityData();
+    public void ExportEntityData();
 
-    public bool SetID();
+    public bool SetID(int id);
 
     public int GetID();
 }

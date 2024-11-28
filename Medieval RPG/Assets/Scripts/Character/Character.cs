@@ -1,33 +1,61 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour, IEntity
 {
-    public enum Gender { Male, Female }
+    [Serializable]
+    class CharacterData
+    {
+        public int entityID;
+        public string characterName;
+        public int age;
+        public int gender;
+        public string[] status;
+        public string[] personalities;
+    }
+    CharacterData characterData;
 
-    public int entityID;
-    public string characterName;
-    public int age;
-    public Gender gender;
-    public List<string> personalities = new List<string>();
-    public List<string> status = new List<string>();
+    public List<string> personalityInnerRep = new List<string>();
+    public List<string> StatusInnerRep = new List<string>();
 
-    public void AddStatus(string v) { status.Add(v); }
-    public void RemoveStatus(string v) {status.Remove(v); }
+    public void AddPersonality(string v)
+    {
+        personalityInnerRep.Add(v);
+        characterData.personalities = personalityInnerRep.ToArray();
+    }
 
-    public void SendEntityData()
+    public void RemovePersonality(string v)
+    {
+        if(StatusInnerRep.Remove(v))
+            characterData.status = StatusInnerRep.ToArray(); 
+    }
+
+    public void AddStatus(string v)
+    {
+        StatusInnerRep.Add(v);
+        characterData.status = StatusInnerRep.ToArray();
+    }
+
+    public void RemoveStatus(string v)
+    {
+        if(StatusInnerRep.Remove(v))
+            characterData.status = StatusInnerRep.ToArray(); 
+    }
+
+    public void ExportEntityData()
     {
 
     }
 
-    public bool SetID()
+    public bool SetID(int id)
     {
         return true;
     }
 
     public int GetID()
     {
-        return entityID;
+        return characterData.entityID;
     }
 }
