@@ -29,7 +29,7 @@ public class CameraMove : MonoBehaviour
                 transform.position = new Vector3(cameraX, cameraY, transform.position.z);
                 break;
             case GameManager.Location.Hill:
-                transform.position = new Vector3(-17f, -45f, transform.position.z);
+                transform.position = new Vector3(-17f, 45f, transform.position.z);
                 break;
         }
     }
