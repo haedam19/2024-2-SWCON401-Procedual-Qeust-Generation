@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
-public abstract class Character : MonoBehaviour, IEntity
+public class Character : MonoBehaviour, IEntity
 {
     [Serializable]
-    class CharacterData
+    public class CharacterData
     {
         public int entityID;
         public string characterName;
@@ -15,7 +16,7 @@ public abstract class Character : MonoBehaviour, IEntity
         public string[] status;
         public string[] personalities;
     }
-    CharacterData characterData;
+    public CharacterData characterData;
 
     public List<string> personalityInnerRep = new List<string>();
     public List<string> StatusInnerRep = new List<string>();
@@ -46,7 +47,8 @@ public abstract class Character : MonoBehaviour, IEntity
 
     public void ExportEntityData()
     {
-
+        string jsonData = JsonUtility.ToJson(characterData);
+        string path = Path.Combine(Application.dataPath, string.Format("/Character_{0}.json", characterData.entityID));
     }
 
     public bool SetID(int id)

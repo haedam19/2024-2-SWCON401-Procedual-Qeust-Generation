@@ -26,6 +26,16 @@ public class Player : MonoBehaviour
         transform.position += dir * speed * Time.deltaTime;
         if (dirX != 0)
             FlipSprites(dirX < 0);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject npcObj = Physics2D.OverlapCircle(transform.position, 2.5f, 1 << LayerMask.NameToLayer("NPC")).gameObject;
+            if (npcObj)
+            {
+                Character npc = npcObj.GetComponentInParent<Character>();
+                MessageManager.Instance.StartDialog(npc, "Hi, do you need any help?");
+            }
+        }
     }
 
     void FlipSprites(bool flip)

@@ -1,6 +1,26 @@
-{
-    "name": "Jafa",
-    "gender": 0,
-    "status": ["prime minister of "],
-    "personalities": ["ambitious", "selfish"]
-}
+[
+    {
+        "id": 1,
+        "name": "Aladdin",
+        "age" : 18,
+        "gender": 0,
+        "status": [],
+        "personalities": ["greedy", "adventurous"]
+    },
+    {
+        "id": 2,
+        "name": "Dalia",
+        "age" : 17,
+        "gender": 1,
+        "status": ["villager"],
+        "personalities": ["coward"]
+    },
+    {
+        "id": 3,
+        "name": "Mike",
+        "age" : 30,
+        "gender": 0,
+        "status": ["blacksmith"],
+        "personalities": []
+    }
+]

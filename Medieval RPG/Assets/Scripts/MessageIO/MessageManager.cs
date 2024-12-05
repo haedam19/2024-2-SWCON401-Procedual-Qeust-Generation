@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MessageMgr : MonoBehaviour
+public class MessageManager : MonoBehaviour
 {
-    private static MessageMgr _instance;
-    public static MessageMgr Instance
+    private static MessageManager _instance;
+    public static MessageManager Instance
     {
         get
         {
@@ -18,13 +18,16 @@ public class MessageMgr : MonoBehaviour
     }
 
     public Character partner;
-    DialogUI _dialogUI;
+    public DialogUI _dialogUI;
     UdpSocket _udpSocket;
 
     private void Awake()
     {
         if(_instance == null)
+        {
             _instance = this;
+            _dialogUI.gameObject.SetActive(false);
+        }
         else
             Destroy(gameObject);
     }
@@ -50,7 +53,9 @@ public class MessageMgr : MonoBehaviour
 
     public void StartDialog(Character partner, string initialSentence)
     {
-        
+        _dialogUI.gameObject.SetActive(true);
+        _dialogUI.partnerNameField.text = partner.characterData.characterName;
+        _dialogUI.rcvdText.text = initialSentence;
     }
 
     public void EndDialog()

@@ -17,7 +17,7 @@ public class DialogUI : MonoBehaviour
 
         if (msg != "")
         {
-            MessageMgr.Instance.ProcessSendingData(msg);
+            MessageManager.Instance.ProcessSendingData(msg);
             messageInputField.text = null;
         }
     }
