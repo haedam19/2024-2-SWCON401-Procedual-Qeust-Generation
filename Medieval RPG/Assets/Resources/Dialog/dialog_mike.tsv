@@ -1,0 +1,4 @@
+1	Good morning, {p}! Long time no see.
+0	Hi, you don't look well. What's wrong?
+1	I have a problem these days. Can you do me a favor?
+0	{QUERY}

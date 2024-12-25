@@ -3,7 +3,6 @@ from pyvis.network import Network
 class Node:
     def __init__(self, id):
         self.id = id
-        self.edges = None
 
     def __eq__(self, other):
         return self.id == other.id
@@ -18,6 +17,7 @@ class Graph:
     def __init__(self):
         self.nodeCount = 0
         self.nodeSet = set()
+        self.edgeSet = set()
 
     def searchNode(self, id):
         for node in self.nodeSet:
