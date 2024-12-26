@@ -8,7 +8,7 @@ public class CSVTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = CSVReader.Read("Dialog1");
+        text = CSVReader.Read("Dialog/Dialog1");
         int length = text.Count;
         Debug.Log(length);
         for (int i = 0; i < length; i++)

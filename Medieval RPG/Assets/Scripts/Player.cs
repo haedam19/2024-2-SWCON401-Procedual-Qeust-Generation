@@ -10,11 +10,14 @@ public class Player : Character
     SpriteRenderer[] sprites;
     public float speed = 20f;
 
+    SceneScript1 scene;
+
     // Start is called before the first frame update
     override protected void Start()
     {
         base.Start();
         sprites = GetComponentsInChildren<SpriteRenderer>();
+        scene = GameObject.Find("@Manager").GetComponent<SceneScript1>();
     }
 
     // Update is called once per frame
@@ -35,6 +38,9 @@ public class Player : Character
             if (npcCol)
             {
                 Character npc = npcCol.GetComponentInParent<Character>();
+                scene.names[0] = characterData.characterName;
+                scene.names[1] = npc.characterData.characterName;
+
                 MessageManager.Instance.StartDialog(npc, "Hi, do you need any help?");
             }
         }

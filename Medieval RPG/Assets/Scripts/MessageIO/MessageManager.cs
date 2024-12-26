@@ -17,6 +17,7 @@ public class MessageManager : MonoBehaviour
         }
     }
 
+    public SceneScript1 scene;
     public Character partner;
     public DialogUI _dialogUI;
     UdpSocket _udpSocket;

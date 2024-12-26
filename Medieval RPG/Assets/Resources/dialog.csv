@@ -1,0 +1,6 @@
+﻿Character,Message,InputFlag
+1,"Good morning, {0}! Long time no see.",
+0,"Hi, {1}. you don't look well. What's wrong?",
+1,I have a problem these days. Can you do me a favor?,
+0,Sure.,
+0,,f
