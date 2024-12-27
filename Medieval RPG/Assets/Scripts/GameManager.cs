@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum Location { Town, Hill }
+    public enum Location { Town, Hill, SouthPlane }
     public GameObject UI;
     
     Player player;

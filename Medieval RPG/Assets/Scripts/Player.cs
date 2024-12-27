@@ -31,7 +31,7 @@ public class Player : Character
         if (dirX != 0)
             FlipSprites(dirX < 0);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             // 전제: NPC 오브젝트는 NPC Layer로 설정되어 있음
             Collider2D npcCol = Physics2D.OverlapCircle(transform.position, 2.5f, 1 << LayerMask.NameToLayer("NPC"));
@@ -40,7 +40,7 @@ public class Player : Character
                 Character npc = npcCol.GetComponentInParent<Character>();
                 scene.names[0] = characterData.characterName;
                 scene.names[1] = npc.characterData.characterName;
-
+                scene.BindParameter();
                 MessageManager.Instance.StartDialog(npc, "Hi, do you need any help?");
             }
         }

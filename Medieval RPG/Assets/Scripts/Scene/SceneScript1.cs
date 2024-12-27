@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UIElements;
 
 public class SceneScript1 : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class SceneScript1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Header: Character, Message, InputFlag
         dialogData = CSVReader.Read("dialog");
-
+        BindParameter();
 
     }
 
@@ -28,9 +30,16 @@ public class SceneScript1 : MonoBehaviour
 
     public void BindParameter()
     {
+        //¿Ï
         for (int i = 0; i < dialogData.Count; i++)
         {
-            int j = int.Parse(dialogData[i]["Character"].ToString());
+            int characterCode = int.Parse(dialogData[i]["Character"].ToString());
+            dialogData[i]["Character"] = names[characterCode];
+
+            if (dialogData[i]["Message"].ToString().Contains("{0}"))
+                dialogData[i]["Message"] = dialogData[i]["Message"].ToString().Replace("{0}", names[0]);
+            if (dialogData[i]["Message"].ToString().Contains("{1}"))
+                dialogData[i]["Message"] = dialogData[i]["Message"].ToString().Replace("{1}", names[1]);
         }
     }
 }
