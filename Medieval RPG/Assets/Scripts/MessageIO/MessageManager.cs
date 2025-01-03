@@ -16,11 +16,13 @@ public class MessageManager : MonoBehaviour
             return _instance;
         }
     }
-
-    public SceneScript1 scene;
+    public bool isUIActive = false;
+    public SceneScript1 _scene;
     public Character partner;
     public DialogUI _dialogUI;
     UdpSocket _udpSocket;
+
+    int dialogIndex;
 
     private void Awake()
     {
@@ -57,6 +59,26 @@ public class MessageManager : MonoBehaviour
         _dialogUI.gameObject.SetActive(true);
         _dialogUI.partnerNameField.text = partner.characterData.characterName;
         _dialogUI.rcvdText.text = initialSentence;
+    }
+
+    public void StartDialog(SceneScript1 scene)
+    {
+        _scene = scene;
+        _dialogUI.gameObject.SetActive(true);
+        dialogIndex = 0;
+        _dialogUI.partnerNameField.text = _scene.dialogData[dialogIndex]["Character"].ToString();
+        _dialogUI.rcvdText.text = _scene.dialogData[dialogIndex].ToString();
+    }
+
+    public void ReadNextDialogText()
+    {
+        dialogIndex += 1;
+        if (dialogIndex == _scene.dialogData.Count)
+            EndDialog();
+        else
+        {
+
+        }
     }
 
     public void EndDialog()

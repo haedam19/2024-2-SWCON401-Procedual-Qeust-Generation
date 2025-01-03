@@ -18,7 +18,7 @@ public class SceneScript1 : MonoBehaviour
     {
         // Header: Character, Message, InputFlag
         dialogData = CSVReader.Read("dialog");
-        BindParameter();
+        //BindParameter();
 
     }
 
@@ -30,6 +30,7 @@ public class SceneScript1 : MonoBehaviour
 
     public void BindParameter()
     {
+        print(dialogData[0]["Character"].ToString());
         //¿Ï
         for (int i = 0; i < dialogData.Count; i++)
         {

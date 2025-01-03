@@ -44,6 +44,10 @@ public class Player : Character
                 MessageManager.Instance.StartDialog(npc, "Hi, do you need any help?");
             }
         }
+        if (Input.GetKeyDown(KeyCode.Space) && MessageManager.Instance.isUIActive)
+        {
+            MessageManager.Instance.ReadNextDialogText();
+        }
     }
 
     void FlipSprites(bool flip)

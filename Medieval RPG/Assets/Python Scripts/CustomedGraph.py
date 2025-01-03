@@ -31,4 +31,3 @@ class Graph:
             return True
         else:
             return False
-    
